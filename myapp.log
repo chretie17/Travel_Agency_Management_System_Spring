@@ -1,0 +1,26 @@
+2023-12-11 19:38:49.343  INFO 17108 --- [main] TravelAgency.TtaWebAppApplication        : Starting TtaWebAppApplication using Java 17.0.9 on LAPTOP-CHNC22O4 with PID 17108 (C:\Users\chretien\OneDrive\Desktop\my project\tta-master\target\classes started by chretien in C:\Users\chretien\OneDrive\Desktop\my project\tta-master)
+2023-12-11 19:38:49.347  INFO 17108 --- [main] TravelAgency.TtaWebAppApplication        : No active profile set, falling back to default profiles: default
+2023-12-11 19:38:50.932  INFO 17108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-12-11 19:38:51.026  INFO 17108 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 5 JPA repository interfaces.
+2023-12-11 19:38:51.587  INFO 17108 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-12-11 19:38:51.595  INFO 17108 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-12-11 19:38:51.595  INFO 17108 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2023-12-11 19:38:51.663  INFO 17108 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/app]    : Initializing Spring embedded WebApplicationContext
+2023-12-11 19:38:51.663  INFO 17108 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2211 ms
+2023-12-11 19:38:51.961  INFO 17108 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-12-11 19:38:52.078  INFO 17108 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.3.Final
+2023-12-11 19:38:52.318  INFO 17108 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-12-11 19:38:52.904  INFO 17108 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-12-11 19:38:53.168  WARN 17108 --- [main] org.hibernate.mapping.RootClass          : HHH000038: Composite-id class does not override equals(): TravelAgency.entities.AuthorityId
+2023-12-11 19:38:53.168  WARN 17108 --- [main] org.hibernate.mapping.RootClass          : HHH000039: Composite-id class does not override hashCode(): TravelAgency.entities.AuthorityId
+2023-12-11 19:38:53.859  INFO 17108 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-12-11 19:38:53.867  INFO 17108 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-12-11 19:38:53.909  WARN 17108 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-12-11 19:38:54.415  INFO 17108 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47bfde21, org.springframework.security.web.context.SecurityContextPersistenceFilter@1d126f07, org.springframework.security.web.header.HeaderWriterFilter@1f602930, org.springframework.security.web.authentication.logout.LogoutFilter@66f223fa, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@66b62ebd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@f2b4303, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3dbb7bb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@628f0936, org.springframework.security.web.session.SessionManagementFilter@1d4c6e32, org.springframework.security.web.access.ExceptionTranslationFilter@24bdd996, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@24fb752f]
+2023-12-11 19:38:54.599  INFO 17108 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2023-12-11 19:38:54.952  INFO 17108 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2023-12-11 19:38:55.071  INFO 17108 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path '/app'
+2023-12-11 19:38:55.094  INFO 17108 --- [main] TravelAgency.TtaWebAppApplication        : Started TtaWebAppApplication in 6.928 seconds (JVM running for 8.752)
+2023-12-11 19:38:55.669  INFO 17108 --- [RMI TCP Connection(3)-192.168.1.74] o.a.c.c.C.[Tomcat].[localhost].[/app]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-11 19:38:55.669  INFO 17108 --- [RMI TCP Connection(3)-192.168.1.74] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-12-11 19:38:55.672  INFO 17108 --- [RMI TCP Connection(3)-192.168.1.74] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

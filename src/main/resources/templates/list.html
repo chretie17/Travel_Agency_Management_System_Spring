@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <!-- Add any necessary meta tags, stylesheets, or scripts in the head section -->
+</head>
+<body>
+<!-- Include navigation fragment -->
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<h1>List of Users</h1>
+
+<!-- Display success message if it exists -->
+<div th:if="${successMessage}">
+    <div class="alert alert-success" role="alert">
+        <p th:text="${successMessage}"></p>
+    </div>
+</div>
+
+<table th:if="${users.size() > 0}" border="1">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Delete</th>
+        <th>Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td><a th:href="@{'/users/delete/' + ${user.username}}">Delete</a></td>
+        <td><a th:href="@{'/users/update/' + ${user.username}}">Update</a></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Display message if user list is empty -->
+<div th:if="${users.size() == 0}">
+    <p>User List is empty</p>
+</div>
+
+<!-- Add any additional content or scripts as needed -->
+
+</body>
+</html>

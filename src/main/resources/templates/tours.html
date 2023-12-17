@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Tours</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #f3f5f9;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+        }
+
+        .sidebar {
+            overflow-x: hidden;
+            width: 100vw;
+            height: 100px;
+            background: #03010e;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: height 0.5s;
+        }
+
+        .wrapper:hover .sidebar {
+            height: 150px;
+        }
+
+        .wrapper .sidebar h2 {
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .wrapper .sidebar ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper .sidebar ul li {
+            margin-right: 20px;
+            border-bottom: 1px solid #594f8d;
+            transition: background-color 0.3s;
+        }
+
+        .wrapper .sidebar ul li:last-child {
+            margin-right: 0;
+        }
+
+        .wrapper .sidebar ul li a {
+            color: #bdb8d7;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .wrapper .sidebar ul li:hover {
+            background-color: #594f8d;
+        }
+
+        .wrapper .sidebar ul li:hover a {
+            color: #fff;
+        }
+
+        .wrapper .main_content {
+            margin-top: 100px;
+            transition: margin-top 0.5s;
+        }
+
+        .wrapper:hover .main_content {
+            margin-top: 150px;
+        }
+
+        .wrapper .main_content .header {
+            padding: 20px;
+            background: #fff;
+            color: #594f8d;
+            border-bottom: 1px solid #e0e4e8;
+        }
+
+        .wrapper .main_content .info {
+            margin: 20px;
+            color: #717171;
+            line-height: 25px;
+        }
+
+        .wrapper .main_content .info div {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!--<div class="container">-->
+    <div th:replace="~{navigation :: navigation(Tours)}"></div>
+<a class="nav-button" th:href="@{/index}">Home</a>
+
+Copy code
+<div style="margin-left: 18%;">
+    <h1 style="margin-top: 30px;text-align: center;">Available Tours</h1>
+    <h1 style="margin-bottom: 50px;"></h1>
+    <span th:if="${products.size() == 0}">Tours List is empty</span>
+    <table th:if="${products.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>When Starts</td>
+            <td>When Ending</td>
+            <td>Destination</td>
+            <td>Date</td>
+            <td>Price</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tours : ${products}">
+            <td th:text="${tours.id}"></td>
+            <td th:text="${tours.title}"></td>
+            <td th:text="${tours.when_starts}"></td>
+            <td th:text="${tours.when_ending}"></td>
+            <td th:text="${tours.destination}"></td>
+            <td th:text="${tours.date}"></td>
+            <td th:text="${tours.price}"></td>
+            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${tours.id}}">Details</a></td>
+            <td sec:authorize="isAuthenticated() and !hasRole('ADMIN')">
+                <a class="btn btn-success" th:href="@{'/myTours/add/' + ${tours.id}}">Save to my tours</a>
+            </td>
+
+            <td sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-danger" th:href="@{'/products/delete/' + ${tours.id}}">Delete</a>
+            </td>
+            <td th:if="${tours != null}" sec:authorize="hasRole('ADMIN')">
+                <a class="btn btn-warning" th:href="@{'/tours/update/' + ${tours.id}}">Update</a>
+            </td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+    <!-- Form for creating tours (visible to admins only) -->
+    <div sec:authorize="hasRole('ADMIN')">
+        <h2>Create New Tour</h2>
+        <form th:action="@{/tours/create}" method="post">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="when_starts">When Starts:</label>
+                <input type="text" class="form-control datepicker" id="when_starts" name="when_starts" required>
+            </div>
+            <div class="form-group">
+                <label for="when_ending">When Ending:</label>
+                <input type="text" class="form-control datepicker" id="when_ending" name="when_ending" required>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <input type="text" class="form-control" id="destination" name="destination" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="text" class="form-control datepicker" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" id="price" name="price" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Create Tour</button>
+        </form>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        // Add this script to initialize the datepickers
+        $('#when_starts').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#when_ending').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+
+        $('#date').datepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            todayHighlight: true
+        });
+    });
+</script>
+
+<!--</div>-->
+</body>
+</html>

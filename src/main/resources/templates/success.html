@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <!-- Add any necessary meta tags, stylesheets, or scripts in the head section -->
+</head>
+<body>
+<!-- Include navigation fragment if needed -->
+<div th:replace="~{fragments/navigation :: navigation}"></div>
+
+<!-- Display success message -->
+<div class="alert alert-success" role="alert">
+    <p th:text="${message}"></p>
+</div>
+
+<!-- Add any additional content or scripts as needed -->
+
+</body>
+</html>

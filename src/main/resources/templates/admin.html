@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="utf-8"/>
+
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #f3f5f9;
+            margin: 0;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            position: relative;
+        }
+
+        .sidebar {
+            overflow-x: hidden;
+            width: 100vw;
+            height: 100px;
+            background: #03010e;
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            transition: height 0.5s;
+        }
+
+        .wrapper:hover .sidebar {
+            height: 150px;
+        }
+
+        .wrapper .sidebar h2 {
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .wrapper .sidebar ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+        }
+
+        .wrapper .sidebar ul li {
+            margin-right: 20px;
+            border-bottom: 1px solid #594f8d;
+            transition: background-color 0.3s;
+        }
+
+        .wrapper .sidebar ul li:last-child {
+            margin-right: 0;
+        }
+
+        .wrapper .sidebar ul li a {
+            color: #bdb8d7;
+            text-decoration: none;
+            padding: 10px;
+        }
+
+        .wrapper .sidebar ul li:hover {
+            background-color: #594f8d;
+        }
+
+        .wrapper .sidebar ul li:hover a {
+            color: #fff;
+        }
+
+        .wrapper .main_content {
+            margin-top: 100px;
+            transition: margin-top 0.5s;
+        }
+
+        .wrapper:hover .main_content {
+            margin-top: 150px;
+        }
+
+        .wrapper .main_content .header {
+            padding: 20px;
+            background: #fff;
+            color: #594f8d;
+            border-bottom: 1px solid #e0e4e8;
+        }
+
+        .wrapper .main_content .info {
+            margin: 20px;
+            color: #717171;
+            line-height: 25px;
+        }
+
+        .wrapper .main_content .info div {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{navigation :: navigation(Admin)}"></div>
+
+<div style="margin-left: 18%;">
+
+    <h1 style="text-align: center; margin-top: 30px;">These are available tours right now</h1>
+    <!--        <h1>It is admin panel</h1>-->
+    <h1 style="padding-bottom: 50px;"></h1>
+    <span th:if="${tour.size() == 0}">Tours List is empty</span>
+    <table th:if="${tour.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>When Starts</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tours : ${tour}">
+            <td th:text="${tours.id}"></td>
+            <td th:text="${tours.title}"></td>
+            <td th:text="${tours.when_starts}"></td>
+            <td><a class="btn btn-secondary" th:href="@{'/details/' + ${tours.id}}">Details</a></td>
+            <td sec:authorize="hasRole('ADMIN') || hasRole('USER')"><a class="btn btn-success" th:href="@{'/myTours/add/' + ${tours.id}}">Save to my tours</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{'/products/delete/' + ${tours.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- Add this section to display users -->
+    <h1 style="text-align: center; margin-top: 30px;">List of All Users</h1>
+    <span th:if="${users.size() == 0}">User List is empty</span>
+    <table th:if="${users.size() > 0}" class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>Username</td>
+            <td>Email</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.email}"></td>
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{'/users/delete/' + ${user.username}}">Delete</a></td>
+            <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-primary" th:href="@{'/users/update/' + ${user.username}}">Update</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- End of user section -->
+
+    <!-- Existing tour table... -->
+
+</div>
+</body>
+</html>

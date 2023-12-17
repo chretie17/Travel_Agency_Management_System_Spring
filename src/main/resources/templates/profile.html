@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<h1>User Profile</h1>
+<div th:if="${userDTO != null}">
+    <p th:text="'Username: ' + ${userDTO.username}"></p>
+    <p th:text="'Email: ' + ${userDTO.email}"></p>
+</div>
+<div th:if="${userDTO == null}">
+    <p>User not authenticated</p>
+</div>
+</body>
+</html>

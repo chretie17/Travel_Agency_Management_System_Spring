@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booked Tours</title>
+</head>
+<body>
+<h2>Booked Tours</h2>
+<table>
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Tour</th>
+        <th>Destination</th>
+        <!-- Add other columns as needed -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.user.username}"></td>
+        <td th:text="${order.items[0].tour.name}"></td>
+        <td th:text="${order.items[0].tour.destination}"></td>
+        <!-- Add other cells as needed -->
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
