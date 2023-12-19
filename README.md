@@ -32,14 +32,14 @@ Expected Outcomes:
   - Confirmation emails are sent to users, providing a professional and reassuring touch to their interactions.
  
   - Password reset links are securely generated and delivered to users through email.
-    ![image](https://github.com/chretie17/Travel_Agency_Management_System_Spring/assets/130080990/9de7afd7-af34-4f05-958f-7f4dcb67c22f)
+   ![image](https://github.com/chretie17/Travel_Agency_Management_System_Spring/assets/130080990/46ccc410-71ee-4216-9b6a-24c7f43198fa)
 
  
   - Email verification is implemented for user contact, enhancing security and ensuring valid user information.
   - When a user makes an order he gets an email:
  ![image](https://github.com/chretie17/Travel_Agency_Management_System_Spring/assets/130080990/bdda7f26-6323-41ae-91d5-fa3c0005f1ff)
 
-  - Email is sent when the user sign up.
+  - Email is sent when the user signs up.
     ![image](https://github.com/chretie17/Travel_Agency_Management_System_Spring/assets/130080990/d1e2c7f1-4bcb-4d59-85c4-aa033cb8e566)
 
 
