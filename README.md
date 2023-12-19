@@ -132,4 +132,69 @@ The application boasts a fully implemented frontend, providing users with an int
 
 With a well-integrated frontend and backend solution, the Travel Agency Application emerges as a feature-rich platform, offering users a delightful and streamlined travel planning experience.
 
+## Installation
 
+To run this project, you need to have Java 17, Maven, and MySQL installed on your system.
+
+- Clone this repository:
+
+bash
+git clone https://github.com/chretie17/Travel_Agency_Management_System_Spring.git
+cd Travel_Agency_Management_System_Spring
+
+
+- Create a MySQL database named travel_agency and import the travel_agency.sql file from the src/main/resources folder.
+
+- Edit the application.properties file in the src/main/resources folder and change the following properties according to your MySQL configuration:
+
+properties
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+spring.mail.username=your_email
+spring.mail.password=your_email_password
+
+
+- Run the project using Maven:
+
+bash
+mvn spring-boot:run
+
+
+- Open http://localhost:8081/app in your browser and enjoy the application.
+
+
+
+The Travel Agency Management System is a Java web application built using the Spring Framework. The application handles various aspects of travel agency management, such as managing customer bookings, flight schedules, and hotel bookings.
+
+Here is an overview of the architecture:
+
+Database Layer: The system uses a MySQL database to store information about customers, and bookings, The database schema is defined using SQL and can be created by executing the provided SQL script.
+
+Data Access Layer: The application uses the Spring Data JPA framework to interact with the MySQL database. The JPA framework allows the application to access and manipulate data stored in relational databases using a simple and uniform API.
+
+Business Logic Layer: The business logic layer of the application is implemented using Java classes. These classes are responsible for processing the user's requests and managing the overall state of the application.
+
+Web Layer: The web layer of the application is implemented using Thymeleaf templates. These templates define the user interface of the application and allow the application to dynamically generate HTML pages based on the user's interactions with the application.
+
+Controller Layer: The application uses Spring MVC for handling HTTP requests and responses. The controllers in the application are responsible for processing the user's requests and invoking the appropriate business logic and data access components.
+
+To set up the project, you can follow these steps:
+
+Set up a new Spring project using Spring Initializr: https://start.spring.io/
+
+Import the project into your preferred IDE.
+
+Configure the database connection in the application.properties file.
+
+Could you create the database schema by executing the provided SQL script?
+
+Run the project using an IDE like IntelliJ IDEA or Eclipse.
+
+Access the Travel Agency Management System using the provided URL.
+
+The Travel Agency Management System uses several libraries and frameworks, such as:
+
+Spring Boot: A framework simplifying the development of stand-alone, production-grade Spring-based applications.
+Spring Data JPA: A library that simplifies the integration of JPA-based data access layers with Spring-based applications.
+MySQL Connector/J: A JDBC driver that allows the application to connect to MySQL databases.
+Thymeleaf: A Java-based template engine for both web and standalone environments.
